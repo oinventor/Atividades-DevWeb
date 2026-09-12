@@ -1,0 +1,33 @@
+
+.banner-content {
+	margin: 0 auto;
+	text-align: center;
+    padding: 1rem 0 0;
+}
+
+.banner-image {
+	display: block;
+	width: min(100%, 360px);
+	height: auto;
+	margin: 0rem auto 0;
+}
+
+.info-card {
+	height: 100%;
+	border: 1px solid #e2ecee;
+	border-radius: .75rem;
+	box-shadow: 0 .5rem 1.5rem rgba(24, 50, 75, .06);
+}
+
+.project-progress {
+	height: 12px;
+}
+
+.project-progress-fill {
+	width: 0%;
+}
+
+.project-progress-fill.complete {
+	width: 100%;
+}
+
