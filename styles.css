@@ -1,0 +1,83 @@
+:root {
+	--ink: #18324b;
+	--muted: #65788a;
+	--coral: #f27f6d;
+}
+
+body {
+	color: var(--ink);
+	background: #f8fbfc;
+}
+
+.navbar-brand {
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.welcome-banner {
+	background: linear-gradient(120deg, #dff4f2, #fdf0e9);
+	border-bottom: 1px solid #dce9eb;
+}
+
+.welcome-banner h1 {
+	max-width: 620px;
+	font-weight: 700;
+	letter-spacing: -.03em;
+}
+
+.welcome-banner p {
+	max-width: 570px;
+	color: var(--muted);
+}
+
+.btn-coral {
+	color: #fff;
+	background: var(--coral);
+	border-color: var(--coral);
+}
+
+.btn-coral:hover,
+.btn-coral:focus {
+	color: #fff;
+	background: #dc6958;
+	border-color: #dc6958;
+}
+
+.info-card {
+	height: 100%;
+	border: 1px solid #e2ecee;
+	border-radius: .75rem;
+	box-shadow: 0 .5rem 1.5rem rgba(24, 50, 75, .06);
+}
+
+.card-number {
+	width: 2.75rem;
+	height: 2.75rem;
+	display: grid;
+	place-items: center;
+	color: #fff;
+	background: var(--ink);
+	border-radius: .65rem;
+	font-weight: 700;
+}
+
+.muted-copy {
+	color: var(--muted) !important;
+}
+
+.project-progress {
+	height: 12px;
+}
+
+.project-progress-fill {
+	width: 72%;
+}
+
+footer a {
+	color: inherit;
+	text-decoration: none;
+}
+
+footer a:hover {
+	color: var(--coral);
+}
