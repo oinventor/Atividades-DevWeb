@@ -67,7 +67,10 @@ function LoadEvents() {
 
 // Unload events
 function UnloadEvents() {
-    document.querySelectorAll('#eventCard').forEach(card => document.getElementById('dashboard').removeChild(card));
+    const eventCards = document.getElementById('dashboard').querySelectorAll('#eventCard');
+    if (eventCards.length !=0 ) {
+        eventCards.forEach(card => card.remove());
+    }
 }
 
 // Add new event
