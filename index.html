@@ -30,9 +30,24 @@
         </div>
 
         <div id="novo-evento" class="card-body shadow-sm mb-4 d-none">
-            <p>
-                sou
-            </p>
+            <form>
+                <label for="eventName ">Nome do evento</label>
+                <input type="text" class="form-control" id="eventName" placeholder="Nome do evento">
+
+                <label for="eventType ">Tipo de evento</label>
+                <input type="text" class="form-control" id="eventType" placeholder="Tipo de evento">
+
+                <label for="eventLocal ">Local</label>
+                <input type="text" class="form-control" id="eventLocal" placeholder="Local do evento">
+
+                <label for="eventDate ">Data do evento</label>
+                <input type="date" class="form-control" id="eventDate">
+
+                <label for="eventDescription ">Descrição</label>
+                <input type="text" class="form-control" id="eventDescription" placeholder="Descrição do evento">
+
+                <button id="btnNewEvent" class="btn btn-primary" type="button">Cadastrar evento</button>
+            </form>
         </div>
     </main>
 
