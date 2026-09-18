@@ -18,24 +18,44 @@
 
     <main id="app" class="container pb-5">
         <div id="dashboard" class="card-body shadow-sm mb-4">
-            <p>
-                ola
-            </p>
+            <h1 class="mb-2">Dashboard</h1>
+            <span class="badge text-black mb-2">Eventos</span>
+
+            <!--Making it easyer for moa ;}-->
+            <div id= "eventCard" class="card-body shadow-sm mb-4 row">
+                <h2 class="h4 text-danger">Nome do evento</h2>
+                <span class="h6 text-muted mb-2">Descrição</span>
+                <div class="col-sm">
+                    <span class="h4 text-black mb-2">Local</span>
+                    <span class="h5 text-black mb-2">Data</span>
+                </div>
+                <span class="h5 text-black mb-2">Status</span>
+            </div>
+
         </div>
 
-        <div id="eventos" class="card-body shadow-sm mb-4 d-none">
+        <div id="eventos" class="card-body shadow-sm mb-5 d-none">
             <p>
                 eu
             </p>
         </div>
 
         <div id="novo-evento" class="card-body shadow-sm mb-4 d-none">
-            <form>
+            <h1 class="mb-2">Cadastrar novos eventos</h1>
+            <span id="subtituloNewEvent" class="badge text-black mb-2">Crie aqui novos eventos</span>
+            <form id="eventForm">
+
                 <label for="eventName ">Nome do evento</label>
                 <input type="text" class="form-control" id="eventName" placeholder="Nome do evento">
 
                 <label for="eventType ">Tipo de evento</label>
-                <input type="text" class="form-control" id="eventType" placeholder="Tipo de evento">
+                <select id="eventType" class="form-select">
+                    <option value="">Escolha</option>
+                    <option value="palestra">Palestra</option>
+                    <option value="workshop">Workshop</option>
+                    <option value="minicurso">Minicurso</option>
+                    <option value="visita-tecnica">Visita Técnica</option>
+                </select>
 
                 <label for="eventLocal ">Local</label>
                 <input type="text" class="form-control" id="eventLocal" placeholder="Local do evento">
@@ -44,7 +64,7 @@
                 <input type="date" class="form-control" id="eventDate">
 
                 <label for="eventDescription ">Descrição</label>
-                <input type="text" class="form-control" id="eventDescription" placeholder="Descrição do evento">
+                <input type="textarea" class="form-control" id="eventDescription" placeholder="Descrição do evento">
 
                 <button id="btnNewEvent" class="btn btn-primary" type="button">Cadastrar evento</button>
             </form>
