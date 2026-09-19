@@ -41,6 +41,7 @@ function LoadEvents(dataView) {
         const eventCard = document.createElement('div');
         eventCard.classList.add('card-body', 'shadow-sm', 'mb-4', 'row');
         eventCard.id = "eventCard";
+        eventCard.dataset.eventId = event.id;
 
         const eventTittle = document.createElement('h2');
         eventTittle.classList.add('h4', 'text-danger');
@@ -68,7 +69,25 @@ function LoadEvents(dataView) {
         eventStatus.id = "eventStatus";
 
         eventColum.append(eventLocal, eventDate);
-        eventCard.append(eventTittle, eventDescription, eventColum, eventStatus);
+
+        if (dataView == "dashboard") {
+            eventCard.append(eventTittle, eventDescription, eventColum, eventStatus);
+        }
+        else{
+            const btnAttend = document.createElement('button');
+            btnAttend.classList.add('btn', 'btn-success');
+            btnAttend.id = 'btnAttend';
+            btnAttend.type = 'button';
+            btnAttend.textContent = 'Realizar';
+
+            const btnDelete = document.createElement('button');
+            btnDelete.classList.add('btn', 'btn-danger');
+            btnDelete.id = 'btnDelete';
+            btnDelete.type = 'button';
+            btnDelete.textContent = 'Deletar';
+
+            eventCard.append(eventTittle, eventDescription, eventColum, eventStatus, btnAttend, btnDelete);
+        }
 
         document.getElementById(dataView).appendChild(eventCard);
     });
@@ -107,10 +126,29 @@ document.getElementById('btnNewEvent').addEventListener('click', () => {
 });
 
 // Remove event
-
+document.getElementById('eventos').addEventListener('click', event => {
+    if (event.target.id == 'btnDelete') {
+        // Closest method is m method that searches uppwards in the family tree until it finds
+        // the specific family menber
+        const eventCard = event.target.closest('#eventCard');
+        const eventId = Number(eventCard.dataset.eventId);
+        events = events.filter(event => event.id !== eventId);
+        UnloadEvents('eventos');
+        LoadEvents('eventos');
+    }
+});
 
 // Attend event
-
+document.getElementById('eventos').addEventListener('click', event => {
+    if (event.target.id == 'btnAttend') {
+        const eventCard = event.target.closest('#eventCard');
+        const eventId = Number(eventCard.dataset.eventId);
+        const eventToAttend = events.find(event => event.id === eventId);
+        eventToAttend.status = "Realizado";
+        UnloadEvents('eventos');
+        LoadEvents('eventos');
+    }
+});
 
 // Filters
 document.getElementById('txtFilter').addEventListener('keypress', () => {
