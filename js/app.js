@@ -132,7 +132,7 @@ document.getElementById('eventos').addEventListener('click', event => {
         // the specific family menber
         const eventCard = event.target.closest('#eventCard');
         const eventId = Number(eventCard.dataset.eventId);
-        events = events.filter(event => event.id !== eventId);
+        events.pop(events.findIndex(event => event.id !== eventId));
         UnloadEvents('eventos');
         LoadEvents('eventos');
     }
