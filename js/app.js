@@ -9,15 +9,12 @@ let ids = 0;
 // Nav
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        let eventNumber
-        if (link.dataset.view == "dashboard") {
-            if (eventNumber != events.length) {
-                LoadEvents();
-                eventNumber = events.length
-            }
+        if (link.dataset.view == "novo-evento") {
+            UnloadEvents(link.dataset.view);
         }
         else{
-            UnloadEvents();
+            UnloadEvents(link.dataset.view);
+            LoadEvents(link.dataset.view);
         }
         navLinks.forEach(navLink => {
             document.getElementById(navLink.dataset.view).classList.add('d-none');
@@ -29,8 +26,18 @@ navLinks.forEach(link => {
 // Events
 
 // Load events
-function LoadEvents() {
+function LoadEvents(dataView) {
     events.forEach(event => {
+        // This is the filter func, it will return a array of elements that meet 
+        // a certain condition. This method works with arrays of any datatype. Very usefull (:o
+        // in this case, it will return a array of objects that have the "Realizado" status
+        const attendedCount = events.filter(event => event.status == "Realizado").length;
+        document.querySelectorAll('#event-info').forEach(element => {
+            element.textContent = `Total de eventos: ${events.length}. 
+                                            ${attendedCount} eventos realizados e 
+                                            ${events.length - attendedCount} eventos agendados`;
+        });
+
         const eventCard = document.createElement('div');
         eventCard.classList.add('card-body', 'shadow-sm', 'mb-4', 'row');
         eventCard.id = "eventCard";
@@ -38,6 +45,7 @@ function LoadEvents() {
         const eventTittle = document.createElement('h2');
         eventTittle.classList.add('h4', 'text-danger');
         eventTittle.textContent = event.tittle;
+        eventTittle.id = "eventTittle";
 
         const eventDescription = document.createElement('span');
         eventDescription.classList.add('h6', 'text-muted', 'mb-2');
@@ -57,17 +65,18 @@ function LoadEvents() {
         const eventStatus = document.createElement('span');
         eventStatus.classList.add('h5', 'text-black', 'mb-2');
         eventStatus.textContent = event.status;
+        eventStatus.id = "eventStatus";
 
         eventColum.append(eventLocal, eventDate);
         eventCard.append(eventTittle, eventDescription, eventColum, eventStatus);
 
-        document.getElementById('dashboard').appendChild(eventCard);
+        document.getElementById(dataView).appendChild(eventCard);
     });
 }
 
 // Unload events
-function UnloadEvents() {
-    const eventCards = document.getElementById('dashboard').querySelectorAll('#eventCard');
+function UnloadEvents(dataView) {
+    const eventCards = document.getElementById(dataView).querySelectorAll('#eventCard');
     if (eventCards.length !=0 ) {
         eventCards.forEach(card => card.remove());
     }
@@ -89,7 +98,7 @@ document.getElementById('btnNewEvent').addEventListener('click', () => {
             local: document.getElementById('eventLocal').value.trim(),
             date: document.getElementById('eventDate').value,
             description: document.getElementById('eventDescription').value.trim(),
-            status: "Não Realizado",
+            status: "Não realizado",
         }
         events.push(event);
         document.getElementById('subtituloNewEvent').textContent = "Evento cadastrado com sucesso";
@@ -97,6 +106,65 @@ document.getElementById('btnNewEvent').addEventListener('click', () => {
     }
 });
 
-// Remove Events
+// Remove event
 
-// Realize events
+
+// Attend event
+
+
+// Filters
+document.getElementById('txtFilter').addEventListener('keypress', () => {
+    const eventCards = document.querySelectorAll('#eventCard');
+    if (eventCards.length != 0) {
+        eventCards.forEach(eventCard => {
+            if (eventCard.querySelector('#eventTittle').textContent.includes(document.getElementById('txtFilter').value)){
+                eventCard.classList.remove('d-none');
+
+                return;
+            }
+            eventCard.classList.add('d-none');
+        });
+    }
+});
+
+document.getElementById('selectFilter').addEventListener('change', () => {
+    const eventCards = document.querySelectorAll('#eventCard');
+    if (eventCards.length != 0) {
+        eventCards.forEach(eventCard => {
+            if (eventCard.querySelector('#eventStatus').textContent.includes(document.getElementById('selectFilter').value)){
+                eventCard.classList.remove('d-none');
+
+                return;
+            }
+            eventCard.classList.add('d-none');
+        });
+    }
+});
+
+document.getElementById('txtFilterE').addEventListener('keypress', () => {
+    const eventCards = document.querySelectorAll('#eventCard');
+    if (eventCards.length != 0) {
+        eventCards.forEach(eventCard => {
+            if (eventCard.querySelector('#eventTittle').textContent.includes(document.getElementById('txtFilterE').value)){
+                eventCard.classList.remove('d-none');
+
+                return;
+            }
+            eventCard.classList.add('d-none');
+        });
+    }
+});
+
+document.getElementById('selectFilterE').addEventListener('change', () => {
+    const eventCards = document.querySelectorAll('#eventCard');
+    if (eventCards.length != 0) {
+        eventCards.forEach(eventCard => {
+            if (eventCard.querySelector('#eventStatus').textContent.includes(document.getElementById('selectFilterE').value)){
+                eventCard.classList.remove('d-none');
+
+                return;
+            }
+            eventCard.classList.add('d-none');
+        });
+    }
+});

@@ -19,14 +19,45 @@
     <main id="app" class="container pb-5">
         <div id="dashboard" class="card-body shadow-sm mb-4">
             <h1 class="mb-2">Dashboard</h1>
-            <span class="badge text-black mb-2">Eventos</span>
+            <span id="event-info" class="badge text-black mb-2">Total de eventos:  .  realizados e  agendados</span>
+            <div class="row">
+                <label for="txtFilter" class="form-label">
+                    Pesquisar evento:
+                </label>
+                <div class="col-sm">
+                    <input type="text" id="txtFilter" class="form-control mb-3" placeholder="Nome do evento">
+                </div>
+                <div class="col-sm">
+                    <select id="selectFilter" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="Realizado">Realizados</option>
+                        <option value="N">Não Realizado</option>
+                    </select>
+                </div>
+            </div>
         </div>
 
         <div id="eventos" class="card-body shadow-sm mb-5 d-none">
+            <h1 class="mb-2">Eventos</h1>
+            <span id="event-info" class="badge text-black mb-2">Total de eventos:  .  realizados e  agendados</span>
+            <div class="row">
+                <label for="txtFilterE" class="form-label">
+                    Pesquisar evento:
+                </label>
+                <div class="col-sm">
+                    <input type="text" id="txtFilterE" class="form-control mb-3" placeholder="Nome do evento">
+                </div>
+                <div class="col-sm">
+                    <select id="selectFilterE" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="Realizado">Realizados</option>
+                        <option value="N">Não Realizado</option>
+                    </select>
+                </div>
+            </div>
 
-            
             <!--Making it easyer for moa ;}-->
-            <div id= "eventCard" class="card-body shadow-sm mb-4 row">
+            <div id= "" class="card-body shadow-sm mb-4 row">
                 <h2 class="h4 text-danger">Nome do evento</h2>
                 <span class="h6 text-muted mb-2">Descrição</span>
                 <div class="col-sm">
