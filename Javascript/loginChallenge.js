@@ -1,6 +1,7 @@
 import { SimpleGet } from "./apiConections.js";
-import { ChangePage } from "./pageFuncs.js";
+import { GoTo } from "./pageFuncs.js";
 
+await GoTo("Login");
 
 const email = document.getElementById("inputEmail");
 const senha = document.getElementById("inputPassword");
@@ -28,7 +29,7 @@ window.addEventListener("click", async(event) => {
 function Response(chalengeResult) {
     switch (chalengeResult) {
         case true:
-            ChangePage("Front");
+            GoTo("Front", "./Javascript/frontScript.js");
             break;
         default:
             email.value || senha.value ? window.alert("Senha ou email estao errados") : window.alert("Senha ou email vazios");
